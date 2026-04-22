@@ -1,6 +1,12 @@
-EPOCHS: 5
-BATCH_SIZE: 32
+# Model Architecture
+IN_CHANNELS: 165
+HIDDEN_CHANNELS: 64
+OUT_CHANNELS: 2
+
+# Training Parameters
+EPOCHS: 100
 LEARNING_RATE: 0.001
-FEATURES_SIZE: 6 # Number of node features in your HIV dataset
-EMBEDDING_SIZE: 1024
-CLASSES: 2 # Number of classes for classification (e.g., active vs inactive)
+BATCH_SIZE: 1 # GNNs on full graphs typically use 1 batch
+
+# Evaluation Parameters
+METRIC_NAME: "f1_score"
