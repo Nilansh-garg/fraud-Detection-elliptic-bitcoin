@@ -4,3 +4,7 @@ data_ingestion:
   root_dir: artifacts/data_ingestion
   local_data_path: artifacts/data_ingestion/elliptic
   dataset_name: EllipticBitcoinDataset
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/elliptic
