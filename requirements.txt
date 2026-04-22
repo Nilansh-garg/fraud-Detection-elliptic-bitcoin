@@ -1,0 +1,29 @@
+# Core Machine Learning & Data Science
+torch
+numpy
+pandas
+scikit-learn
+scipy
+
+# Graph Neural Networks (Specific to your notebook)
+# Note: These usually require specific versions matching your Torch/CUDA version
+# Example: torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${TORCH}.html
+
+# VGAE & Generative Modeling
+# (Handled by torch-geometric, but sometimes requires specific loaders)
+
+# MLOps & Tracking (Based on your known stack)
+mlflow
+dagshub
+dvc
+
+# Web Framework & Deployment
+flask
+gunicorn
+requests
+
+# Visualization
+matplotlib
+seaborn
+
+-e .
