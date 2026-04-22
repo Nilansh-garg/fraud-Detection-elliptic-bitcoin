@@ -16,3 +16,9 @@ prepare_base_model:
 model_training:
   root_dir: artifacts/model_training
   trained_model_path: artifacts/model_training/model.pt
+  
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  data_path: artifacts/data_transformation/transformed_data.pt
+  model_path: artifacts/model_training/model.pt
+  metric_file_name: artifacts/model_evaluation/metrics.json
