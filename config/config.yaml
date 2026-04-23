@@ -8,6 +8,7 @@ data_ingestion:
 data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_ingestion/elliptic
+  trained_data_path: artifacts/data_transformation/transformed_data.pt
 
 prepare_base_model:
   root_dir: artifacts/prepare_base_model
