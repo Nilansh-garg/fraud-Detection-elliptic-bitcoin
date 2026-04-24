@@ -6,6 +6,8 @@ from src.frauddetection.components.training_model import Training
 from src.frauddetection import logger
 from src.frauddetection.entity.model_arch import FraudSAGE
 
+
+
 import os
 from pathlib import Path
 

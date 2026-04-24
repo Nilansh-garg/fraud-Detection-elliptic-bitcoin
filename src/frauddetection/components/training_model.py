@@ -6,7 +6,14 @@ import torch_geometric
 import torch_geometric.data.data
 import torch_geometric.data.storage
 from src.frauddetection.config.configuration import TrainingConfig
-
+torch.serialization.add_safe_globals([
+    torch_geometric.data.data.DataTensorAttr,
+    torch_geometric.data.data.DataEdgeAttr,
+    torch_geometric.data.storage.GlobalStorage,
+    # You might also need these depending on your PyG version:
+    # torch_geometric.data.Data, 
+    # torch_geometric.data.storage.EdgeStorage 
+])
 
 class Training:
     def __init__(self, config: TrainingConfig):
