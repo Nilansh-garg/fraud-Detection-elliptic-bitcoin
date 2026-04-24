@@ -1,0 +1,55 @@
+stages:
+  data_ingestion:
+    cmd: python stage_01_data_ingestion.py
+    deps:
+      - stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/elliptic
+
+  data_transformation:
+    cmd: python stage_02_data_transformation.py
+    deps:
+      - stage_02_data_transformation.py
+      - artifacts/data_ingestion/elliptic
+      - config/config.yaml
+    outs:
+      - artifacts/data_transformation/transformed_data.pt
+
+  prepare_base_model:
+    cmd: python stage_03_prepare_base_model.py
+    deps:
+      - stage_03_prepare_base_model.py
+      - config/config.yaml
+    params:
+      - params.yaml:
+          # List your specific params here, e.g.:
+          # - LEARNING_RATE
+          # - GNN_LAYERS
+    outs:
+      - artifacts/prepare_base_model/base_model.pt
+
+  training:
+    cmd: python stage_04_training_model.py
+    deps:
+      - stage_04_training_model.py
+      - artifacts/data_transformation/transformed_data.pt
+      - artifacts/prepare_base_model/base_model.pt
+      - config/config.yaml
+    params:
+      - params.yaml:
+          # - EPOCHS
+          # - BATCH_SIZE
+    outs:
+      - artifacts/model_training/model.pt
+
+  evaluation:
+    cmd: python stage_05_model_Evaluation.py
+    deps:
+      - stage_05_model_Evaluation.py
+      - artifacts/data_transformation/transformed_data.pt
+      - artifacts/model_training/model.pt
+      - config/config.yaml
+    metrics:
+      - artifacts/model_evaluation/metrics.json:
+          cache: false
