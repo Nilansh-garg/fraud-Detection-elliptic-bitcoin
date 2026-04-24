@@ -1,25 +1,25 @@
 stages:
   data_ingestion:
-    cmd: python stage_01_data_ingestion.py
+    cmd: python src/frauddetection/pipeline/stage_01_data_ingestion.py
     deps:
-      - stage_01_data_ingestion.py
+      - src/frauddetection/pipeline/stage_01_data_ingestion.py
       - config/config.yaml
     outs:
       - artifacts/data_ingestion/elliptic
 
   data_transformation:
-    cmd: python stage_02_data_transformation.py
+    cmd: python src/frauddetection/pipeline/stage_02_data_transformation.py
     deps:
-      - stage_02_data_transformation.py
+      - src/frauddetection/pipeline/stage_02_data_transformation.py
       - artifacts/data_ingestion/elliptic
       - config/config.yaml
     outs:
       - artifacts/data_transformation/transformed_data.pt
 
   prepare_base_model:
-    cmd: python stage_03_prepare_base_model.py
+    cmd: python src/frauddetection/pipeline/stage_03_prepare_base_model.py
     deps:
-      - stage_03_prepare_base_model.py
+      - src/frauddetection/pipeline/stage_03_prepare_base_model.py
       - config/config.yaml
     params:
       - params.yaml:
@@ -30,9 +30,9 @@ stages:
       - artifacts/prepare_base_model/base_model.pt
 
   training:
-    cmd: python stage_04_training_model.py
+    cmd: python src/frauddetection/pipeline/stage_04_training_model.py
     deps:
-      - stage_04_training_model.py
+      - src/frauddetection/pipeline/stage_04_training_model.py
       - artifacts/data_transformation/transformed_data.pt
       - artifacts/prepare_base_model/base_model.pt
       - config/config.yaml
@@ -44,9 +44,9 @@ stages:
       - artifacts/model_training/model.pt
 
   evaluation:
-    cmd: python stage_05_model_Evaluation.py
+    cmd: python src/frauddetection/pipeline/stage_05_model_evaluation.py
     deps:
-      - stage_05_model_Evaluation.py
+      - src/frauddetection/pipeline/stage_05_model_evaluation.py
       - artifacts/data_transformation/transformed_data.pt
       - artifacts/model_training/model.pt
       - config/config.yaml
