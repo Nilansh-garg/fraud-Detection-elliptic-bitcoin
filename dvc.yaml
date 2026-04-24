@@ -44,12 +44,12 @@ stages:
       - artifacts/model_training/model.pt
 
   evaluation:
-    cmd: python src/frauddetection/pipeline/stage_05_model_evaluation.py
+    cmd: python src/frauddetection/pipeline/stage_05_model_Evaluation.py
     deps:
-      - src/frauddetection/pipeline/stage_05_model_evaluation.py
+      - src/frauddetection/pipeline/stage_05_model_Evaluation.py
       - artifacts/data_transformation/transformed_data.pt
       - artifacts/model_training/model.pt
       - config/config.yaml
     metrics:
-      - artifacts/model_evaluation/metrics.json:
+      - scores.json:
           cache: false

@@ -1,6 +1,7 @@
 from frauddetection.config.configuration import ConfigurationManager
 from frauddetection.components.model_evaluation import Evaluation
 from frauddetection import logger
+from frauddetection.entity.model_arch import FraudSAGE
 
 STAGE_NAME = "EVALUATION STAGE"
 
@@ -13,7 +14,7 @@ class EvaluationPipeline:
             config = ConfigurationManager()
             eval_config = config.get_evaluation_config()
             evaluation = Evaluation(config=eval_config)
-            evaluation.evaluation()
+            evaluation.evaluation(FraudSAGE)
             evaluation.save_score()
             evaluation.log_into_mlflow()
     except Exception as e:
