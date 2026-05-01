@@ -19,23 +19,20 @@ class SinglePredictionPipeline:
         """
         try:
             # 1. Load the raw data
-            # CRITICAL: Elliptic features CSV has no headers. 
-            # Column 0: txId, Column 1: timestep, Columns 2-166: features.
             logger.info(f"Loading features from {feature_csv_path}")
+            # The features CSV has no headers
             df_features = pd.read_csv(feature_csv_path, header=None)
             
             # Manually name the first column to avoid KeyError 'txId'
             df_features.rename(columns={0: 'txId'}, inplace=True)
             
-            # Load edges (Edgelist usually has headers txId1, txId2)
+            # Load edges
             df_edges = pd.read_csv(edge_csv_path)
 
             # 2. Check if IDs exist and map them to internal indices
-            # GNNs operate on node indices (0 to N-1), not the raw transaction IDs.
             indices = []
             valid_ids = []
             
-            # Ensure input IDs are integers (matching the CSV data type)
             search_ids = [int(tid) for tid in transaction_ids]
             
             for tx_id in search_ids:
@@ -50,16 +47,16 @@ class SinglePredictionPipeline:
                 return {"error": "No valid Transaction IDs found in the dataset."}
 
             # 3. Prepare Graph Data (Tensors)
-            # We drop 'txId' before passing to the model. 
-            # Note: Some implementations also drop the 'timestep' (column 1).
-            # If your model was trained on 165 features, drop the first two columns.
-            x_data = df_features.drop('txId', axis=1).values
+            # FIX: Use .iloc[:, 2:] to drop both 'txId' (index 0) and 'timestep' (index 1)
+            # This ensures we have exactly 165 features for the model
+            x_data = df_features.iloc[:, 2:].values 
             x = torch.tensor(x_data, dtype=torch.float)
+            
+            logger.info(f"Input tensor shape: {x.shape}") # Should be [203769, 165]
 
             # Map raw txIds in edge list to 0-indexed positions for the tensor
             id_map = {val: i for i, val in enumerate(df_features['txId'].values)}
             
-            # Filter edges to ensure we only use IDs present in our feature matrix
             edge_index_mapped = df_edges[
                 df_edges['txId1'].isin(id_map) & df_edges['txId2'].isin(id_map)
             ].copy()
@@ -72,7 +69,7 @@ class SinglePredictionPipeline:
             # 4. Load Model
             logger.info("Initializing model and loading weights...")
             model = FraudSAGE(
-                in_channels=self.params.IN_CHANNELS,
+                in_channels=self.params.IN_CHANNELS, # Must be 165
                 hidden_channels=self.params.HIDDEN_CHANNELS,
                 out_channels=self.params.OUT_CHANNELS
             )
@@ -85,7 +82,6 @@ class SinglePredictionPipeline:
             # 5. Run Inference
             logger.info(f"Running prediction for {len(valid_ids)} nodes...")
             with torch.no_grad():
-                # GraphSAGE forward pass (requires full graph context)
                 out = model(x, edge_index)
                 probabilities = torch.softmax(out, dim=1)
                 
