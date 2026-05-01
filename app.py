@@ -6,8 +6,8 @@ from src.frauddetection import logger
 app = Flask(__name__)
 
 # Configuration for paths
-FEAT_PATH = os.path.join("artifacts", "data_ingestion", "elliptic", "elliptic_txs_features.csv")
-EDGE_PATH = os.path.join("artifacts", "data_ingestion", "elliptic", "elliptic_txs_edgelist.csv")
+FEAT_PATH = os.path.join("artifacts", "data_ingestion", "elliptic", "raw", "elliptic_txs_features.csv")
+EDGE_PATH = os.path.join("artifacts", "data_ingestion", "elliptic", "raw", "elliptic_txs_edgelist.csv")
 
 @app.route('/', methods=['GET'])
 def index():
