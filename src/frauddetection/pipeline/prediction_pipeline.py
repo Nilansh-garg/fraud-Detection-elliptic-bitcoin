@@ -52,7 +52,7 @@ class SinglePredictionPipeline:
             x_data = df_features.iloc[:, 2:].values 
             x = torch.tensor(x_data, dtype=torch.float)
             
-            logger.info(f"Input tensor shape: {x.shape}") # Should be [203769, 165]
+            logger.info(f"Input tensor shape: {x.shape}") 
 
             # Map raw txIds in edge list to 0-indexed positions for the tensor
             id_map = {val: i for i, val in enumerate(df_features['txId'].values)}
