@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — FraudSense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+          <polygon points="11,1 21,6 21,16 11,21 1,16 1,6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="11" cy="11" r="3" fill="currentColor"/>
+        </svg>
+        FraudSense
+      </a>
+      <div class="nav-links">
+        <a href="/about" class="nav-link nav-link--active">About</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <a href="/predict" class="nav-cta">Analyze Transaction →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="a-hero">
+    <div class="about-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="a-hero-inner">
+
+      <!-- Avatar + identity -->
+      <div class="a-identity" data-reveal>
+        <div class="a-avatar">N</div>
+        <div class="a-identity-text">
+          <h1 class="a-name">Nilansh Garg</h1>
+          <p class="a-tagline">B.Tech · Data Science &amp; Machine Learning</p>
+          <div class="a-badges">
+            <span class="a-badge">
+              <span class="pulse-dot"></span>
+              Open to Opportunities
+            </span>
+            <span class="a-badge a-badge--mono">Meerut, India · IST</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="reveal-wrap" style="--delay:0.12s">
+        <p class="a-summary" data-reveal>
+          Highly analytical B.Tech candidate specialising in Data Science and Machine Learning.
+          Strong foundation in predictive modelling, Graph Neural Networks, and MLOps pipelines.
+          Experienced in processing chemical and financial relational data for deep learning applications
+          — passionate about solving complex problems through data-driven insights and scalable
+          engineering solutions.
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <div class="reveal-wrap" style="--delay:0.22s">
+        <div class="a-links" data-reveal>
+          <a href="mailto:nilansh.garg.cseds.2022@miet.ac.in" class="a-link-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="4" width="20" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Email
+          </a>
+          <a href="https://linkedin.com/in/nilansh-garg-1830b92a1" target="_blank" rel="noopener" class="a-link-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 10v7M7 7v.5M12 17v-4c0-1.1.9-2 2-2s2 .9 2 2v4M12 10v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Nilansh-garg" target="_blank" rel="noopener" class="a-link-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            GitHub
+          </a>
+          <a href="tel:+917900814167" class="a-link-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M6.5 3h3l1.5 4-2 1.5c1 2 2.5 3.5 4.5 4.5L15 11l4 1.5v3C19 17.5 14 20 6.5 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            +91 7900814167
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SKILLS
+  ══════════════════════════════════════════ -->
+  <section class="a-section a-section--alt" id="skills">
+    <div class="a-inner">
+      <div class="a-section-head">
+        <p class="eyebrow" data-scroll-reveal><span class="eyebrow-pip"></span>Technical Skills</p>
+        <h2 class="section-h2" data-scroll-reveal>The stack<br>behind the science.</h2>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card" data-scroll-reveal>
+          <div class="skill-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <polyline points="16 18 22 12 16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="8 6 2 12 8 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="skill-card-title">Programming</h3>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag--hi">Python</span>
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">RDKit</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-scroll-reveal>
+          <div class="skill-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="skill-card-title">Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag--hi">XGBoost</span>
+            <span class="skill-tag">Random Forest</span>
+            <span class="skill-tag">Ensemble Methods</span>
+            <span class="skill-tag">Feature Engineering</span>
+            <span class="skill-tag">Hyperparameter Tuning</span>
+            <span class="skill-tag">A/B Testing</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-scroll-reveal>
+          <div class="skill-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+            </svg>
+          </div>
+          <h3 class="skill-card-title">Deep Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag--hi">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">ANN</span>
+            <span class="skill-tag">CNN</span>
+            <span class="skill-tag">Transfer Learning</span>
+            <span class="skill-tag">VGG16</span>
+          </div>
+        </div>
+
+        <div class="skill-card skill-card--accent" data-scroll-reveal>
+          <div class="skill-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.6"/>
+              <line x1="12" y1="12" x2="5" y2="8"  stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              <line x1="12" y1="12" x2="19" y2="8" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              <line x1="12" y1="12" x2="5" y2="16" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+              <line x1="12" y1="12" x2="19" y2="16" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </svg>
+          </div>
+          <h3 class="skill-card-title">Advanced AI · GNNs</h3>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag--teal">GraphSAGE</span>
+            <span class="skill-tag skill-tag--teal">GAT</span>
+            <span class="skill-tag skill-tag--teal">PyTorch Geometric</span>
+            <span class="skill-tag">Vector Databases</span>
+            <span class="skill-tag">Node Embeddings</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-scroll-reveal>
+          <div class="skill-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="skill-card-title">MLOps &amp; Data</h3>
+          <div class="skill-tags">
+            <span class="skill-tag skill-tag--hi">MLflow</span>
+            <span class="skill-tag">DVC</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Tableau</span>
+          </div>
+        </div>
+
+        <div class="skill-card" data-scroll-reveal>
+          <div class="skill-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="skill-card-title">Stats &amp; Analytics</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Hypothesis Testing</span>
+            <span class="skill-tag">A/B Testing</span>
+            <span class="skill-tag">AUC-ROC</span>
+            <span class="skill-tag">F1 Score</span>
+            <span class="skill-tag">Model Evaluation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PROJECTS
+  ══════════════════════════════════════════ -->
+  <section class="a-section" id="projects">
+    <div class="a-inner">
+      <div class="a-section-head">
+        <p class="eyebrow" data-scroll-reveal><span class="eyebrow-pip"></span>Data Science Projects</p>
+        <h2 class="section-h2" data-scroll-reveal>Research turned<br><em class="italic-serif">into reality.</em></h2>
+        <p class="section-body" data-scroll-reveal>
+          End-to-end ML systems — from raw data to deployed APIs — across
+          financial fraud, drug discovery, and medical imaging domains.
+        </p>
+      </div>
+
+      <div class="projects-list">
+
+        <!-- Project 1 — FraudSense -->
+        <div class="proj-card proj-card--featured" data-scroll-reveal>
+          <div class="proj-card-top">
+            <div class="proj-num">01</div>
+            <div class="proj-tags">
+              <span class="proj-tag proj-tag--teal">GNN</span>
+              <span class="proj-tag">PyTorch Geometric</span>
+              <span class="proj-tag">MLflow</span>
+              <span class="proj-tag">DVC</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Financial Fraud Detection</h3>
+          <p class="proj-subtitle">Elliptic Bitcoin Dataset · Blockchain Intelligence</p>
+          <ul class="proj-bullets">
+            <li>Designed and implemented a scalable GNN framework to identify illicit activity within the Elliptic Bitcoin dataset, achieving a peak <strong>F1 score of 58.24%</strong>.</li>
+            <li>Leveraged <strong>GraphSAGE</strong> to generate inductive node embeddings, allowing the model to generalise to previously unseen nodes and evolving transaction patterns.</li>
+            <li>Established an end-to-end MLOps pipeline using <strong>DVC</strong> for data versioning and <strong>MLflow</strong> for experiment tracking across iterations.</li>
+            <li>Analysed structural patterns in blockchain data to improve detection rates of sophisticated laundering schemes over traditional non-relational models.</li>
+          </ul>
+          <div class="proj-footer">
+            <a href="/predict" class="btn btn--primary btn--sm">Live Demo →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 — HIV -->
+        <div class="proj-card" data-scroll-reveal>
+          <div class="proj-card-top">
+            <div class="proj-num">02</div>
+            <div class="proj-tags">
+              <span class="proj-tag proj-tag--teal">GNN</span>
+              <span class="proj-tag">RDKit</span>
+              <span class="proj-tag">Flask</span>
+              <span class="proj-tag">PyTorch Geometric</span>
+            </div>
+          </div>
+          <h3 class="proj-title">HIV Progression Prediction</h3>
+          <p class="proj-subtitle">Molecular Graph Modelling · Clinical Decision Support</p>
+          <ul class="proj-bullets">
+            <li>Developed a GNN-based approach to estimate HIV viral load progression by transforming molecular data from CSV into relational graph structures using <strong>RDKit</strong>.</li>
+            <li>Modelled chemical compounds and genetic biomarkers as graphs — atoms as nodes, bonds as edges — capturing complex spatial and relational features.</li>
+            <li>Optimised F1 score from <strong>48.32 → 56.65</strong> through iterative architecture tuning, message-passing optimisation, and stratified cross-validation.</li>
+            <li>Deployed via a <strong>Flask API</strong> to provide real-time progression analysis for clinical decision support systems.</li>
+          </ul>
+        </div>
+
+        <!-- Project 3 — Kidney -->
+        <div class="proj-card" data-scroll-reveal>
+          <div class="proj-card-top">
+            <div class="proj-num">03</div>
+            <div class="proj-tags">
+              <span class="proj-tag proj-tag--amber">CNN</span>
+              <span class="proj-tag">TensorFlow</span>
+              <span class="proj-tag">VGG16</span>
+              <span class="proj-tag">Flask</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Kidney Disease Classification</h3>
+          <p class="proj-subtitle">Medical Imaging · Transfer Learning · Diagnostic AI</p>
+          <ul class="proj-bullets">
+            <li>Built a deep learning diagnostic system to classify kidney ultrasound images into four categories: Normal, Cyst, Tumour, and Stone.</li>
+            <li>Fine-tuned the <strong>VGG16</strong> architecture via transfer learning, achieving <strong>87.56% classification accuracy</strong> on curated medical imaging scans.</li>
+            <li>Implemented data augmentation (rotation, scaling, flipping) to improve robustness and reduce overfitting on small medical datasets.</li>
+            <li>Integrated into a <strong>Flask REST API</strong>, enabling real-time inference through a web interface designed for medical practitioners.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PUBLICATION & EDUCATION
+  ══════════════════════════════════════════ -->
+  <section class="a-section a-section--alt" id="background">
+    <div class="a-inner">
+      <div class="a-two-col">
+
+        <!-- Education + Certification -->
+        <div>
+          <p class="eyebrow" data-scroll-reveal><span class="eyebrow-pip"></span>Education</p>
+
+          <div class="edu-card" data-scroll-reveal>
+            <div class="edu-years">2022 — 2026</div>
+            <div class="edu-body">
+              <h3 class="edu-degree">B.Tech. Computer Science &amp; Engineering</h3>
+              <p class="edu-spec">Specialisation: Data Science</p>
+              <p class="edu-school">MIET, Meerut, Uttar Pradesh</p>
+              <div class="edu-courses">
+                <span class="edu-course">DSA</span>
+                <span class="edu-course">Advanced Database Systems</span>
+                <span class="edu-course">Statistics</span>
+                <span class="edu-course">Machine Learning</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-card" data-scroll-reveal>
+            <div class="cert-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="8" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M7 13l-2 8 7-3 7 3-2-8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="cert-body">
+              <div class="cert-label">Certification · 2024</div>
+              <div class="cert-name">Data Science Certificate</div>
+              <div class="cert-issuer">Code With Harry</div>
+            </div>
+          </div>
+
+          <div class="achieve-card" data-scroll-reveal>
+            <div class="achieve-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="achieve-body">
+              <div class="achieve-label">Achievement</div>
+              <div class="achieve-name">LeetCode 200+ Problems</div>
+              <div class="achieve-desc">DSA · Dynamic Programming · Graphs · Greedy Algorithms</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publication -->
+        <div>
+          <p class="eyebrow" data-scroll-reveal><span class="eyebrow-pip"></span>Publications &amp; Research</p>
+
+          <div class="pub-card" data-scroll-reveal>
+            <div class="pub-meta">
+              <span class="pub-date">April 2026</span>
+              <span class="pub-badge">Best Paper Potential</span>
+            </div>
+            <h3 class="pub-title">
+              Real Estate Ultimate Price Prediction and Recommendation System
+            </h3>
+            <p class="pub-journal">
+              IJRASET · Vol. 14, Issue IV · SJIF Impact Factor: <strong>7.429</strong>
+            </p>
+            <ul class="proj-bullets" style="margin-top:1rem">
+              <li>Authored a comprehensive AI-driven framework for property price prediction and personalised recommendations.</li>
+              <li>Scraped <strong>4,000 residential listings</strong> from 92acres.com to create a unique regional dataset for the Gurgaon real estate market.</li>
+              <li>Developed a hybrid recommendation system utilising market analysis and user preference modelling.</li>
+              <li>Published in the International Journal for Research in Applied Science &amp; Engineering Technology (IJRASET).</li>
+            </ul>
+            <div class="pub-footer">
+              <span class="tech-tag">Web Scraping</span>
+              <span class="tech-tag">Recommendation System</span>
+              <span class="tech-tag">Price Prediction</span>
+              <span class="tech-tag">IJRASET</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CTA BAND
+  ══════════════════════════════════════════ -->
+  <section class="a-cta-band">
+    <div class="a-inner">
+      <div class="a-cta-inner" data-scroll-reveal>
+        <div class="a-cta-text">
+          <h2 class="a-cta-h2">Let's build something<br><em class="italic-serif">intelligent.</em></h2>
+          <p class="a-cta-body">Open to research collaborations, freelance projects, and full-time opportunities in ML &amp; data engineering.</p>
+        </div>
+        <div class="a-cta-actions">
+          <a href="/contact" class="btn btn--primary">Get in Touch →</a>
+          <a href="/predict" class="btn btn--ghost">Try FraudSense ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="f-logo">⬡ FraudSense</span>
+      <span class="f-copy">© 2025 Nilansh Garg — Blockchain Transaction Intelligence</span>
+      <span class="f-status"><span class="pulse-dot"></span> System Online</span>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analyze Transaction — FraudSense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/predict.css') }}">
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+          <polygon points="11,1 21,6 21,16 11,21 1,16 1,6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="11" cy="11" r="3" fill="currentColor"/>
+        </svg>
+        FraudSense
+      </a>
+      <div class="nav-links">
+        <a href="/about" class="nav-link">About</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <a href="/predict" class="nav-link nav-link--active">Analyze Transaction →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════
+       PREDICT PAGE
+  ══════════════════════════════════════════ -->
+  <main class="predict-page">
+
+    <!-- vertical line grid -->
+    <div class="predict-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="predict-inner">
+
+      <!-- ── Page header ── -->
+      <div class="predict-header">
+        <div class="reveal-wrap">
+          <p class="eyebrow" data-reveal>
+            <span class="eyebrow-pip"></span>
+            GNN · Elliptic Bitcoin Dataset
+          </p>
+        </div>
+        <div class="reveal-wrap" style="--delay:0.08s">
+          <h1 class="predict-h1" data-reveal>
+            Analyze a<br><em class="italic-serif">Transaction.</em>
+          </h1>
+        </div>
+        <div class="reveal-wrap" style="--delay:0.16s">
+          <p class="section-body" data-reveal>
+            Enter one or more Elliptic transaction IDs separated by commas.
+            The GNN propagates risk signals across the graph and returns
+            an instant licit / illicit verdict with confidence score.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Main layout: form + sidebar ── -->
+      <div class="predict-grid">
+
+        <!-- ─ LEFT: input + results ─ -->
+        <div class="predict-main">
+
+          <!-- Input card -->
+          <div class="input-card" data-scroll-reveal>
+
+            <div class="input-card-header">
+              <div class="input-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <h2 class="input-card-title">Transaction Lookup</h2>
+                <p class="input-card-subtitle">Enter IDs from the Elliptic dataset</p>
+              </div>
+            </div>
+
+            <form id="predictForm" method="POST" action="/predict" novalidate>
+
+              <div class="tx-input-wrap">
+                <label class="form-label" for="tx_id">Transaction ID(s)</label>
+                <div class="tx-field-row">
+                  <div class="tx-field-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                      <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                      <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                      <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                      <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </div>
+                  <input
+                    class="tx-input"
+                    id="tx_id"
+                    name="tx_id"
+                    type="text"
+                    placeholder="e.g. 2304203, 3819291"
+                    autocomplete="off"
+                    spellcheck="false"
+                    value="{{ request.form.get('tx_id', '') }}"
+                    required
+                  />
+                  <button type="button" class="tx-clear-btn" id="clearBtn" aria-label="Clear">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </button>
+                </div>
+                <p class="tx-hint">
+                  Separate multiple IDs with commas · Max 10 per request
+                </p>
+              </div>
+
+              <!-- Quick sample chips -->
+              <div class="sample-row">
+                <span class="sample-label">Try a sample:</span>
+                <button type="button" class="sample-chip" data-id="2304203">
+                  <span class="sample-dot sample-dot--licit"></span>2304203
+                </button>
+                <button type="button" class="sample-chip" data-id="3819291">
+                  <span class="sample-dot sample-dot--illicit"></span>3819291
+                </button>
+                <button type="button" class="sample-chip" data-id="2304203,3819291">
+                  <span class="sample-dot sample-dot--multi"></span>Both
+                </button>
+              </div>
+
+              <button type="submit" class="btn btn--primary analyze-btn" id="analyzeBtn">
+                <span class="analyze-btn-inner">
+                  <svg class="analyze-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3" fill="currentColor"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M5.636 5.636l2.121 2.121M16.243 16.243l2.121 2.121M5.636 18.364l2.121-2.121M16.243 7.757l2.121-2.121" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                  </svg>
+                  Run Analysis
+                </span>
+                <span class="analyze-btn-loading" hidden>
+                  <span class="spinner"></span>
+                  Analyzing…
+                </span>
+              </button>
+
+            </form>
+
+            <!-- Validation error -->
+            {% if error %}
+            <div class="alert alert--error" id="errorAlert">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              {{ error }}
+            </div>
+            {% endif %}
+
+          </div>
+          <!-- /input-card -->
+
+          <!-- ── RESULTS ── -->
+          {% if results %}
+          <div class="results-section" id="resultsSection">
+
+            <div class="results-header" data-scroll-reveal>
+              <p class="eyebrow">
+                <span class="eyebrow-pip"></span>
+                Analysis Complete
+              </p>
+              <span class="results-count">{{ results|length }} transaction{{ 's' if results|length != 1 else '' }} processed</span>
+            </div>
+
+            <div class="results-list">
+              {% for tx_id, data in results.items() %}
+              <div class="result-card result-card--{{ data.Result | lower }}" data-scroll-reveal>
+
+                <!-- Card header -->
+                <div class="result-card-top">
+                  <div class="result-id-block">
+                    <span class="result-label">Transaction ID</span>
+                    <span class="result-id">{{ tx_id }}</span>
+                  </div>
+
+                  <!-- Verdict badge -->
+                  <div class="verdict-badge verdict-badge--{{ data.Result | lower }}">
+                    {% if data.Result == 'Illicit' %}
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 3l9 16.5H3L12 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M12 10v4M12 17h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                    {% else %}
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {% endif %}
+                    {{ data.Result }}
+                  </div>
+                </div>
+
+                <!-- Confidence bar -->
+                <div class="result-confidence">
+                  <div class="confidence-meta">
+                    <span class="confidence-label">Model Confidence</span>
+                    <span class="confidence-val">{{ data.Confidence }}</span>
+                  </div>
+                  <div class="confidence-track">
+                    <div
+                      class="confidence-bar confidence-bar--{{ data.Result | lower }}"
+                      style="--conf-w: {{ data.Confidence }}"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- Risk signal -->
+                <div class="result-signal">
+                  {% if data.Result == 'Illicit' %}
+                  <div class="signal-row signal-row--alert">
+                    <span class="pulse-dot pulse-dot--red"></span>
+                    <span>High-risk transaction flagged — potential money laundering activity detected by the GNN graph propagation.</span>
+                  </div>
+                  {% else %}
+                  <div class="signal-row signal-row--safe">
+                    <span class="pulse-dot pulse-dot--green"></span>
+                    <span>Transaction classified as licit — no suspicious graph-level signals detected across the network.</span>
+                  </div>
+                  {% endif %}
+                </div>
+
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- Summary row (only if multiple results) -->
+            {% if results|length > 1 %}
+            {% set illicit_count = results.values() | selectattr('Result', 'equalto', 'Illicit') | list | length %}
+            {% set licit_count   = results.values() | selectattr('Result', 'equalto', 'Licit')   | list | length %}
+            <div class="summary-band" data-scroll-reveal>
+              <div class="summary-item">
+                <span class="summary-num summary-num--green">{{ licit_count }}</span>
+                <span class="summary-lbl">Licit</span>
+              </div>
+              <div class="summary-sep"></div>
+              <div class="summary-item">
+                <span class="summary-num summary-num--red">{{ illicit_count }}</span>
+                <span class="summary-lbl">Illicit</span>
+              </div>
+              <div class="summary-sep"></div>
+              <div class="summary-item">
+                <span class="summary-num">{{ results|length }}</span>
+                <span class="summary-lbl">Total</span>
+              </div>
+            </div>
+            {% endif %}
+
+          </div>
+          {% endif %}
+          <!-- /results -->
+
+        </div>
+        <!-- /predict-main -->
+
+        <!-- ─ RIGHT: sidebar ─ -->
+        <aside class="predict-sidebar">
+
+          <!-- How it works -->
+          <div class="sidebar-card" data-scroll-reveal>
+            <div class="sidebar-card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <circle cx="12" cy="12" r="3" fill="currentColor"/>
+              </svg>
+              <span>How it works</span>
+            </div>
+
+            <ol class="how-list">
+              <li class="how-item">
+                <div class="how-num">01</div>
+                <div class="how-body">
+                  <strong>Input</strong>
+                  <p>Enter a numeric Elliptic transaction ID to look up in the dataset.</p>
+                </div>
+              </li>
+              <li class="how-item">
+                <div class="how-num">02</div>
+                <div class="how-body">
+                  <strong>Graph Context</strong>
+                  <p>The GNN loads the full transaction graph — 203K nodes, 234K edges — to provide structural context.</p>
+                </div>
+              </li>
+              <li class="how-item">
+                <div class="how-num">03</div>
+                <div class="how-body">
+                  <strong>Propagation</strong>
+                  <p>GraphSAGE aggregates neighbor features across 2 hops to compute the node embedding.</p>
+                </div>
+              </li>
+              <li class="how-item">
+                <div class="how-num">04</div>
+                <div class="how-body">
+                  <strong>Verdict</strong>
+                  <p>A softmax classifier outputs a licit / illicit prediction with confidence score.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Model stats -->
+          <div class="sidebar-card sidebar-card--accent" data-scroll-reveal>
+            <div class="sidebar-card-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M3 18h4v-8H3v8zM10 18h4V6h-4v12zM17 18h4v-5h-4v5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              <span>Model Stats</span>
+            </div>
+            <div class="stat-list">
+              <div class="stat-row">
+                <span class="stat-key">Architecture</span>
+                <span class="stat-val">GraphSAGE</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Accuracy</span>
+                <span class="stat-val stat-val--teal">92%</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">F1 (Illicit)</span>
+                <span class="stat-val stat-val--amber">58.64%</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Framework</span>
+                <span class="stat-val">PyTorch Geometric</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Dataset</span>
+                <span class="stat-val">Elliptic Bitcoin</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Node Features</span>
+                <span class="stat-val">166</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Time Steps</span>
+                <span class="stat-val">49</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caveat / note -->
+          <div class="sidebar-note" data-scroll-reveal>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>
+              Only IDs present in the Elliptic dataset will return results.
+              Predictions rely on graph-level context — isolated IDs without
+              edges may yield lower confidence scores.
+            </p>
+          </div>
+
+        </aside>
+        <!-- /predict-sidebar -->
+
+      </div>
+      <!-- /predict-grid -->
+
+    </div>
+    <!-- /predict-inner -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="f-logo">⬡ FraudSense</span>
+      <span class="f-copy">© 2025 Nilansh Garg — Blockchain Transaction Intelligence</span>
+      <span class="f-status"><span class="pulse-dot"></span> System Online</span>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+</body>
+</html>

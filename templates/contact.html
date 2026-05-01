@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — FraudSense</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+          <polygon points="11,1 21,6 21,16 11,21 1,16 1,6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="11" cy="11" r="3" fill="currentColor"/>
+        </svg>
+        FraudSense
+      </a>
+      <div class="nav-links">
+        <a href="/about" class="nav-link">About</a>
+        <a href="/contact" class="nav-link nav-link--active">Contact</a>
+        <a href="/predict" class="nav-cta">Analyze Transaction →</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════
+       CONTACT PAGE
+  ══════════════════════════════════════════ -->
+  <main class="contact-page">
+
+    <!-- subtle vertical lines -->
+    <div class="contact-lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="contact-inner">
+
+      <!-- ── Header ── -->
+      <div class="contact-header">
+        <div class="reveal-wrap">
+          <p class="eyebrow" data-reveal>
+            <span class="eyebrow-pip"></span>
+            Get in Touch
+          </p>
+        </div>
+        <div class="reveal-wrap" style="--delay:0.08s">
+          <h1 class="contact-h1" data-reveal>
+            Let's<br><em class="italic-serif">connect.</em>
+          </h1>
+        </div>
+        <div class="reveal-wrap" style="--delay:0.16s">
+          <p class="section-body" data-reveal>
+            Have questions about FraudSense, the Elliptic dataset analysis, or
+            the GNN architecture? Reach out — I'm always happy to discuss
+            blockchain intelligence and fraud detection research.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Grid ── -->
+      <div class="contact-grid">
+
+        <!-- LEFT · Info column -->
+        <div class="info-col">
+
+          <!-- Creator card -->
+          <div class="creator-card" data-scroll-reveal>
+            <div class="creator-avatar">N</div>
+            <div class="creator-text">
+              <div class="creator-name">Nilansh Garg</div>
+              <div class="creator-role">Builder · FraudSense</div>
+              <div class="creator-desc">
+                Developer of FraudSense — blockchain transaction intelligence
+                powered by Graph Neural Networks and the Elliptic dataset.
+              </div>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="info-card info-card--accent" data-scroll-reveal>
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="4" width="20" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <span class="info-label">Email</span>
+              <span class="info-value">
+                <a href="mailto:nilanshgarg13@gmail.com">nilanshgarg13@gmail.com</a>
+              </span>
+              <span class="info-sub">Preferred for project enquiries</span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="info-card" data-scroll-reveal>
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 3h3l1.5 4-2 1.5c1 2 2.5 3.5 4.5 4.5L15 11l4 1.5v3C19 17.5 14 20 6.5 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <span class="info-label">Phone</span>
+              <span class="info-value">
+                <a href="tel:+917900814167">+91 7900814167</a>
+              </span>
+              <span class="info-sub">Available IST business hours</span>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="info-card" data-scroll-reveal>
+            <div class="info-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 14 6 14s6-8.75 6-14c0-3.314-2.686-6-6-6z" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="12" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <span class="info-label">Location</span>
+              <span class="info-value">India</span>
+              <span class="info-sub">UTC+5:30 · IST</span>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="status-row" data-scroll-reveal>
+            <div class="status-icon">
+              <span class="pulse-dot"></span>
+              Available for Collaboration
+            </div>
+            <span class="status-text">Open to research &amp; freelance projects</span>
+          </div>
+
+          <!-- Response note -->
+          <div class="response-note" data-scroll-reveal>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <p>Typical response time is <strong>within 24 hours</strong>. For urgent matters, contact via phone during IST business hours.</p>
+          </div>
+
+        </div>
+
+        <!-- RIGHT · Form column -->
+        <div class="form-card" data-scroll-reveal>
+          <h2 class="form-title">Send a message</h2>
+          <p class="form-subtitle">
+            Fill in the details below and I'll get back to you as soon as possible.
+          </p>
+
+          <form id="contactForm" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="fname">First Name</label>
+                <input class="form-input" id="fname" name="fname" type="text" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="lname">Last Name</label>
+                <input class="form-input" id="lname" name="lname" type="text" placeholder="Doe" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="subject">Subject</label>
+              <select class="form-select" id="subject" name="subject">
+                <option value="">Select a topic…</option>
+                <option value="research">Research Collaboration</option>
+                <option value="model">Model / GNN Architecture</option>
+                <option value="data">Elliptic Dataset Query</option>
+                <option value="freelance">Freelance / Project Work</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-textarea" id="message" name="message"
+                placeholder="Tell me about your query or project…"
+                maxlength="1000" required></textarea>
+              <div class="char-count"><span id="charCount">0</span> / 1000</div>
+            </div>
+
+            <button type="submit" class="btn btn--primary form-submit">
+              Send Message
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                <path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <div class="form-feedback" id="formSuccess">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Message sent! I'll get back to you within 24 hours.
+            </div>
+            <div class="form-feedback" id="formError">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              Please fill in all required fields correctly.
+            </div>
+
+          </form>
+
+          <div class="or-divider"><span>or reach out directly</span></div>
+
+          <div class="social-row">
+            <a href="mailto:nilanshgarg13@gmail.com" class="social-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="4" width="20" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 8l10 7 10-7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              Email
+            </a>
+            <a href="tel:+917900814167" class="social-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 3h3l1.5 4-2 1.5c1 2 2.5 3.5 4.5 4.5L15 11l4 1.5v3C19 17.5 14 20 6.5 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+              Call
+            </a>
+          </div>
+
+        </div>
+        <!-- /form-card -->
+
+      </div>
+      <!-- /contact-grid -->
+
+    </div>
+    <!-- /contact-inner -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="f-logo">⬡ FraudSense</span>
+      <span class="f-copy">© 2025 Nilansh Garg — Blockchain Transaction Intelligence</span>
+      <span class="f-status"><span class="pulse-dot"></span> System Online</span>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+</body>
+</html>
