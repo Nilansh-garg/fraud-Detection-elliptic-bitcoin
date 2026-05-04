@@ -1,29 +1,35 @@
-# Core Machine Learning & Data Science
-torch
-numpy
-pandas
-scikit-learn
-scipy
+# ── NOTE ─────────────────────────────────────────────────────────────────────
+# torch, torch-scatter, torch-sparse, torch-cluster, torch-spline-conv,
+# and torch-geometric are ALL installed in the Dockerfile with pinned versions.
+# DO NOT add torch here — it will conflict with the Dockerfile install and
+# silently break PyG (torch-geometric depends on exact torch ABI).
+# ─────────────────────────────────────────────────────────────────────────────
 
-# Graph Neural Networks (Specific to your notebook)
-# Note: These usually require specific versions matching your Torch/CUDA version
-# Example: torch-scatter torch-sparse -f https://data.pyg.org/whl/torch-${TORCH}.html
+# Data & ML
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
+scipy==1.13.0
 
-# VGAE & Generative Modeling
-# (Handled by torch-geometric, but sometimes requires specific loaders)
-
-# MLOps & Tracking (Based on your known stack)
-mlflow
+# MLOps & Tracking
+mlflow==2.13.0
 dagshub
 dvc
 
-# Web Framework & Deployment
-flask
-gunicorn
-requests
+# Web Framework
+flask==3.0.3
+gunicorn==22.0.0
+requests==2.32.2
 
 # Visualization
-matplotlib
-seaborn
+matplotlib==3.9.0
+seaborn==0.13.2
 
--e .
+# Model download from HF Hub at runtime (same pattern as kidney project)
+huggingface_hub==0.23.2
+
+# ── REMOVED: -e . ─────────────────────────────────────────────────────────────
+# "-e ." installs the current directory as an editable package and requires
+# setup.py or pyproject.toml to exist. HF Spaces build will crash if those
+# files are missing. If you have a proper package setup, add it back.
+# ─────────────────────────────────────────────────────────────────────────────
