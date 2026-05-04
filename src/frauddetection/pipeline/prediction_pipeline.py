@@ -10,7 +10,7 @@ from src.frauddetection import logger
 # ── Model storage (same pattern as kidney project) ───────────────────────────
 # Upload your model.pt to an HF Hub Model repo, then set this repo ID.
 # The app will download it on the first prediction and cache it locally.
-HF_REPO_ID = "YOUR_HF_USERNAME/fraud-detection-model"   # ← UPDATE THIS
+HF_REPO_ID = "Nilansh-garg/fraud-detection-model"   # ← UPDATE THIS
 MODEL_FILENAME = "model.pt"
 MODEL_LOCAL_DIR = "artifacts/model_training"
 MODEL_LOCAL_PATH = os.path.join(MODEL_LOCAL_DIR, MODEL_FILENAME)
